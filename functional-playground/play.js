@@ -12,7 +12,12 @@ import {
   unary,
   once,
   memoized
-} from '../lib/es6-functional'
+} from '../lib/es6-functional';
+
+import {
+  arrayUtils
+}
+from '../lib/utils';
 
 var array = [1, 2, 3]
 forEach(array, (data) => console.log(data))
@@ -135,3 +140,45 @@ console.log(result3);
 
 const result4 = fastFactorial(4);
 console.log(result4);
+
+
+let a = arrayUtils.map([1, 2, 4], (x) => x * x);
+console.log(a);
+
+
+let apressBooks = [{
+  id: 111,
+  title: 'C# 6.0',
+  author: 'Andrew Troelsen',
+  rating: [4.7],
+  reviews: [{
+    good: 4,
+    exclelent: 12
+  }]
+}, {
+  id: 222,
+  title: 'Efficient Learning Machines ',
+  author: 'Rahul Khanna',
+  rating: [4.5],
+  reviews: []
+}, {
+  id: 333,
+  title: 'Pro AngularJS',
+  author: 'Adam Freeman',
+  rating: [4.0],
+  reviews: []
+}];
+
+const b = arrayUtils.map(apressBooks, (book) => {
+  return {
+    title: book.title,
+    author: book.author
+  }
+})
+
+console.log(b);
+
+
+const c = arrayUtils.filter(apressBooks, (book) => book.rating[0] > 4.5);
+
+console.log(c);
